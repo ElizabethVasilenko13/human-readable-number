@@ -40,18 +40,6 @@ module.exports = function toReadable (number) {
         9: 'ninety',
     };
 
-    const fourthNumberObj = {
-        1: 'one hundred',
-        2: 'two hundred',
-        3: 'three hundred',
-        4: 'four hundred',
-        5: 'five hundred',
-        6: 'six hundred',
-        7: 'seven hundred',
-        8: 'eight hundred',
-        9: 'nine hundred'
-    };
-
     if (numToStr.length == 1) {
         return firstNumberObj[number];
     } else if (numToStr.length == 2 && number < 20) {
@@ -61,15 +49,15 @@ module.exports = function toReadable (number) {
     } else if (numToStr.length == 2 && number >= 20) {
         return `${thirdNumberObj[numToStr[0]]} ${firstNumberObj[numToStr[1]]}`;
     } else if (numToStr.length == 3 && numToStr[1] == 0 && numToStr.endsWith('0')) {
-        return `${fourthNumberObj[numToStr[0]]}`;
+        return `${firstNumberObj[numToStr[0]]} hundred`;
     } else if (numToStr.length == 3 && numToStr[1] == 0){
-        return `${fourthNumberObj[numToStr[0]]} ${firstNumberObj[numToStr[2]]}`;
+        return `${firstNumberObj[numToStr[0]]} hundred ${firstNumberObj[numToStr[2]]}`;
     } else if (numToStr.length == 3 && +numToStr.substring(1, 3) < 20) {
-        return `${fourthNumberObj[numToStr[0]]} ${secondNumberObj[numToStr[2]]}`;
+        return `${firstNumberObj[numToStr[0]]} hundred ${secondNumberObj[numToStr[2]]}`;
     } else if (numToStr.length == 3 && numToStr.endsWith('0') && +numToStr.substring(1, 3) >= 20) {
-        return `${fourthNumberObj[numToStr[0]]} ${thirdNumberObj[numToStr[1]]}`;
+        return `${firstNumberObj[numToStr[0]]} hundred ${thirdNumberObj[numToStr[1]]}`;
     } else {
-        return `${fourthNumberObj[numToStr[0]]} ${thirdNumberObj[numToStr[1]]} ${firstNumberObj[numToStr[2]]}`;
+        return `${firstNumberObj[numToStr[0]]} hundred ${thirdNumberObj[numToStr[1]]} ${firstNumberObj[numToStr[2]]}`;
     }
 };
 
